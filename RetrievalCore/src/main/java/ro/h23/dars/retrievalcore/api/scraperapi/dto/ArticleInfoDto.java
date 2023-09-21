@@ -1,0 +1,23 @@
+package ro.h23.dars.retrievalcore.api.scraperapi.dto;
+
+import lombok.*;
+
+import java.util.Date;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+public class ArticleInfoDto {
+    String url;
+    String title;
+    String contents;
+    String contentsTextOnly;
+    String contentsTextOnlyHash;
+    String featuredImageUrl;
+    String featuredImageHash;
+    String publishDate;
+    String author;
+    Date extractedDate;
+}

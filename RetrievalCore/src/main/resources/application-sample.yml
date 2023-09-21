@@ -1,0 +1,39 @@
+server:
+  port: 5678
+  error:
+    include-message: on_param
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maxLifeTime: 600000 #10 minutes wait time
+    url: jdbc:mysql://my-db-server:3306/database_name?useSSL=false
+    username: myuser
+    password: mypass
+  jpa:
+    properties:
+      hibernate:
+        dialect: ro.h23.dars.retrievalcore.service.CustomMySQL8Dialect #org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: INFO #DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: INFO #TRACE
+
+dars:
+  config:
+    site-info-path: sites
+  retrievalcore:
+    jwt-secret: XzGRRRtrhtrhTRHTHtrHRYREertret457645765t43ttt4t45y6u6u65u5u3y43y45y45yu45u4y43y43y43y45y
+    jwt-expiration-ms: 86400000
+  store-path: output
+  remote-api:
+    server-url: http://my-remote-server
