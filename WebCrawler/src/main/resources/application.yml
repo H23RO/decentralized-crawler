@@ -1,0 +1,41 @@
+server:
+  port: 5680
+logging:
+  level:
+    root: INFO
+    com:
+      zaxxer:
+        hikari:
+          pool: ERROR
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update  # create will recreate the tables... use `update` instead create
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver #com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dars_webcrawler?useSSL=true
+    username: root
+    password:
+crawler:
+  # minimum waiting time between crawls from the same site (in milliseconds)
+  site-wait-time-min: 1000
+  # maximum waiting time between crawls from the same site (in milliseconds)
+  site-wait-time-max: 2000
+  # number of crawler instances running at the same time
+  crawler-count: 1
+  # recrawl type can be interval (recrawlInterval is used) or time (recrawlTime is used)
+  recrawl-type: interval
+  # recrawl time interval (in ISO 8601 format for durations); see recrawlType
+  recrawl-interval: PT0H20M
+  # recrawl time of day (in HH:mm:ss format for time); see recrawlType
+  recrawl-time: 08:00:00
+  # recrawl time of day delta (in ISO 8601 format for durations); recrawl will occur at recrawlTime/recrawlInterval +/- rand(recrawlTimeDelta), depending on see recrawlType
+  recrawl-time-delta: PT1H
+  # path to the file containing the crawler seed list
+  gecko-driver-filename: geckodriver.exe
+
+retrievalcore-api:
+  server: http://localhost:5678
+  authentication-path: /api/auth/signin
+  username: crawler1
+  password: $#%#$#$$^$Y$Y$Yh56h56h5^H%^JH%j56j^&J67j67J67j34t#$34tG54
