@@ -1,4 +1,4 @@
-# DWIR - Decentralized Web Information Retrieval
+# DeArRe - Decentralized Article Retrieval
 
 ## Launch RetrievalCore
 
