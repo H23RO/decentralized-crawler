@@ -7,9 +7,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       maxLifeTime: 600000 #10 minutes wait time
-    url: jdbc:mysql://my-db-server:3306/database_name?useSSL=false
-    username: myuser
-    password: mypass
+    url: jdbc:mysql://localhost:3306/dars_retrievalcore?useSSL=false
+    username: root
+    password:
   jpa:
     properties:
       hibernate:
