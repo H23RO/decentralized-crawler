@@ -1,0 +1,22 @@
+{
+  "name": "Digi24",
+  "urlBase": "https://www.digi24.ro",
+  "logoUrl":"https://www.digi24.ro/static/theme-repo/bin/images/digi24-logo.png",
+  "pageTypeClassifier": {
+    "containsList": [
+      "<main id=\"article-content\""
+    ],
+    "containsNotList": [
+		"<a href=\"/video\" title=\"Video\" class=\"breadcrumbs-item-link\"> Video </a> "
+    ]
+  },
+  "extractorTemplate": {
+    "removeElements": ["script, style, div.ad-wrapper"],
+    "title": ["#article-content > article.article > div.container > div.flex.flex-center > div > h1", "text"],
+    "contents": ["#article-content > article.article > div.container > div.flex.flex-end.flex-center-md.flex-stretch > div.col-8.col-md-9.col-sm-12 > div > div > div.entry.data-app-meta.data-app-meta-article", "html"],
+    "featuredImage": ["#article-content > article.article > div.container > div.flex > div  > figure.article-thumb > img", "attr:src"],
+    "media": null,
+    "publishDate": ["#article-content > article.article > div.container > div.flex.flex-center > div  > div.flex.flex-middle > div > div.author > div.author-meta > span:last-child > time", "attr:datetime"],
+    "author": ["#article-content > article.article > div.container > div.flex.flex-end.flex-center-md.flex-stretch > div.col-8.col-md-9.col-sm-12 > div > div > div.entry.data-app-meta.data-app-meta-article a[href*=/autor/]", "attr:href", true]
+  }
+}

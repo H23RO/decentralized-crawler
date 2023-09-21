@@ -35,5 +35,3 @@ dars:
     jwt-secret: XzGRRRtrhtrhTRHTHtrHRYREertret457645765t43ttt4t45y6u6u65u5u3y43y45y45yu45u4y43y43y43y45y
     jwt-expiration-ms: 86400000
   store-path: output
-  remote-api:
-    server-url: http://my-remote-server

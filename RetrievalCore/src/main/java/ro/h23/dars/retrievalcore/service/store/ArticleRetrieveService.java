@@ -98,7 +98,6 @@ public class ArticleRetrieveService {
             } else if (key.equals("title")) {
                 String[] titleValues = singleValue.split(" ");
                 for (String titleValue : titleValues) {
-                    //System.out.println("!!! "  + titleValue);
                     //specificationList.add(ArticleSpecifications.hasLikePropertyValue("title",  titleValue));
                     titleValue = titleValue.toLowerCase();
                     titleValue = titleValue.replace("â", "[aâ]").replace("ă", "[aă]").replace("î", "[iî]").replace("ș", "[sș]").replace("ț", "[tț]");

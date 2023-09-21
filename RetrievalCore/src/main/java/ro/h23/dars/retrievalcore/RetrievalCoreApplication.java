@@ -17,7 +17,7 @@ import ro.h23.dars.retrievalcore.persistence.repository.PageRepository;
 import java.util.List;
 
 @SpringBootApplication
-public class OffchainCoreApplication {
+public class RetrievalCoreApplication {
 
 	@Autowired
 	private NewPageAddedService newPageAddedService;
@@ -25,11 +25,11 @@ public class OffchainCoreApplication {
 	@Autowired
 	private PageRepository pageRepository;
 
-	private static final Logger logger = LogManager.getLogger(OffchainCoreApplication.class);
+	private static final Logger logger = LogManager.getLogger(RetrievalCoreApplication.class);
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(OffchainCoreApplication.class, args);
+		SpringApplication.run(RetrievalCoreApplication.class, args);
 
 	}
 

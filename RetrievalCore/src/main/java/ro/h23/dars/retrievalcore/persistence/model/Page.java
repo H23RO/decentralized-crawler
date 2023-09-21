@@ -18,7 +18,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Table(
         uniqueConstraints=
-        @UniqueConstraint(columnNames={"siteId", "urlPath"})
+        @UniqueConstraint(columnNames={"urlPath", "siteId"}) // !!! the order matters - if the column names are switched then it will not work because of the unique constraint on siteId
 )
 public class Page {
 

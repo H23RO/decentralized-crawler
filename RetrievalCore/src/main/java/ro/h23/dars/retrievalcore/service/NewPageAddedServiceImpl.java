@@ -13,6 +13,7 @@ import ro.h23.dars.retrievalcore.persistence.model.ProcessingState;
 import ro.h23.dars.retrievalcore.persistence.repository.PageUserRepository;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class NewPageAddedServiceImpl implements  NewPageAddedService {
@@ -35,7 +36,18 @@ public class NewPageAddedServiceImpl implements  NewPageAddedService {
         //roleSet.add(role);
         //List<User> userList = userRepository.findByRolesIn(roleSet, Pageable.unpaged());
         List<User> userList = userRepository.findByRolesName(RoleType.ROLE_SCRAPER, Pageable.unpaged());
+
+        // allocate page to a random scraper
+        User user = userList.get(new Random().nextInt(userList.size()));
+        PageUser pageUser = new PageUser();
+        pageUser.setPage(page);
+        pageUser.setUser(user);
+        pageUser.setState(ProcessingState.NEW);
+        pageUser.setId(new PageUserId(page.getId(), user.getId()));
+        pageUserRepository.save(pageUser);
+
         // allocate page to all scrappers
+        /*
         userList.forEach(user -> {
             PageUser pageUser = new PageUser();
             pageUser.setPage(page);
@@ -44,6 +56,7 @@ public class NewPageAddedServiceImpl implements  NewPageAddedService {
             pageUser.setId(new PageUserId(page.getId(), user.getId()));
             pageUserRepository.save(pageUser);
         });
+        */
 
     }
 }

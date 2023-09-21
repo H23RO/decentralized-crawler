@@ -11,7 +11,7 @@ import java.util.List;
 public interface ArticleRepository extends JpaRepository<Article, Long>, JpaSpecificationExecutor<Article> {
 
 
-    @Query("SELECT a FROM Article a WHERE a.state = ro.dars.retrievalcore.persistence.model.ArticleState.VERIFIED ORDER BY a.updateTimestamp ASC")
+    @Query("SELECT a FROM Article a WHERE a.state = ro.h23.dars.retrievalcore.persistence.model.ArticleState.VERIFIED ORDER BY a.updateTimestamp ASC")
     List<Article> findAllVerifiedArticles(Pageable page);
 
     Article findFirstByUrl(String url);

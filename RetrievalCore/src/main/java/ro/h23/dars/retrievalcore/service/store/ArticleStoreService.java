@@ -89,14 +89,11 @@ public class ArticleStoreService {
             // TODO support multiple scrappers
             // FIXME throw new ArticleStoreServiceException("Existing articles not supported yet.");
         }
-        // FIXME articleStates: NEW, STORED IN FILE SYSTEM, STORED IN BLOCKCHAIN
-        // TRIGGER STORE IN BLOCKCHAIN EVERY 100 OR TIME (OR JUST TIME) ... EVERY HOUR GET ALL ARTICLES STORED IN FS AND STORE THEM IN THE BLOCKCHAIN AND UPDATE THE STATUS
         articleRepository.save(article);
 
         // access the article directory
         File articleDir = new File(storePath, article.getId() + "");
         articleDir.mkdirs();
-        //    throw new ArticleStoreServiceException("Could not create the store directory: " + articleDir.getAbsolutePath());
 
         // save the article
         try {
