@@ -1,4 +1,4 @@
-# DeArRe - Decentralized Article Retrieval
+# DARS - Decentralized Article Retrieval System
 
 ## Launch RetrievalCore
 
