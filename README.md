@@ -1,5 +1,9 @@
-# decentralized-crawler
+# DWIR - Decentralized Web Information Retrieval
 
-## Launch crawler
+## Launch RetrievalCore
+
+## Launch WebCrawler
+
+## Launch WebScraper
 
 From the WebCrawler directory: `mvn spring-boot:run`
