@@ -19,18 +19,8 @@ import java.time.LocalTime;
 @ToString
 public class CrawlerConfig {
 
-    public enum RecrawlType {
-        INTERVAL, TIME
-    }
-
     private int siteWaitTimeMin;
     private int siteWaitTimeMax;
-    private int crawlerCount;
-    private RecrawlType recrawlType;
-    private Duration recrawlInterval;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalTime recrawlTime;
-
     private String geckoDriverFilename;
 
 }
