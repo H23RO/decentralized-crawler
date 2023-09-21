@@ -1,0 +1,33 @@
+server:
+  port: 5033
+spring:
+  jpa:
+    database-platform: ro.h23.dars.webscraper.util.SQLDialect
+    hibernate.ddl-auto: update
+  datasource:
+    url: jdbc:sqlite:sqlite_webscraper.db #Here we are creating a database named sqlite_webscraper.db inside the project root folder itself
+    driver-class-name: org.sqlite.JDBC
+    username: admin
+    password: admin
+  #http:
+  #  converters:
+  #    preferred-json-mapper: gson
+  #mvc:
+  #  converters:
+  #    preferred-json-mapper: gson
+  #gson:
+  #  date-format: yyyy-MM-dd'T'HH:mm:ssX
+scraper:
+  # minimum waiting time between crawls from the same site (in milliseconds)
+  site-wait-time-min: 1800
+  # maximum waiting time between crawls from the same site (in milliseconds)
+  site-wait-time-max: 2700
+  # path to the file containing the crawler seed list
+  gecko-driver-filename: geckodriver.exe
+  #
+  output-dir: output
+retrievalcore-api:
+  server: http://localhost:5678
+  authentication-path: /api/auth/signin
+  username: scraper1
+  password: 1#%#$#$$^$Y$Y$Yh56h56h5^H%^JH%j56j^&J67j67J67j34t#$34tG57
