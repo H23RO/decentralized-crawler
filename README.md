@@ -1,4 +1,4 @@
-# DARS - Distributed Article Retrieval System
+# DARS - Decentralized Article Retrieval System
 
 ## Launch RetrievalCore
 
