@@ -33,6 +33,8 @@ dars:
   config:
     # path to the directory with JSON containing the site information and extraction template
     site-info-path: sites
+    # path to server list
+    server-list-path: server_list.txt
   retrievalcore:
     jwt-secret: XzGRRRtrhtrhTRHTHtrHRYREertret457645765t43ttt4t45y6u6u65u5u3y43y45y45yu45u4y43y43y43y45y
     jwt-expiration-ms: 86400000

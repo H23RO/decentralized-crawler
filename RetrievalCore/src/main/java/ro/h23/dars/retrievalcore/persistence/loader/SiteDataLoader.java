@@ -6,8 +6,11 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import ro.h23.dars.retrievalcore.api.publicapi.controller.AllPublicController;
+import ro.h23.dars.retrievalcore.config.exception.ServerListReaderException;
 import ro.h23.dars.retrievalcore.config.exception.SiteInfoReaderException;
 import ro.h23.dars.retrievalcore.config.model.SiteInfo;
+import ro.h23.dars.retrievalcore.config.service.ServerListReaderService;
 import ro.h23.dars.retrievalcore.config.service.SiteInfoReaderService;
 import ro.h23.dars.retrievalcore.persistence.repository.SiteRepository;
 import ro.h23.dars.retrievalcore.persistence.service.SiteDataConverterService;
@@ -26,15 +29,31 @@ public class SiteDataLoader implements ApplicationListener<ContextRefreshedEvent
 
     private final SiteDataConverterService siteDataConverterService;
 
-    public SiteDataLoader(SiteRepository siteRepository, SiteInfoReaderService siteInfoReaderService, SiteDataConverterService siteDataConverterService) {
+    private final ServerListReaderService serverListReaderService;
+
+    private final AllPublicController allPublicController;
+
+    public SiteDataLoader(SiteRepository siteRepository, SiteInfoReaderService siteInfoReaderService, SiteDataConverterService siteDataConverterService, ServerListReaderService serverListReaderService, AllPublicController allPublicController) {
         this.siteRepository = siteRepository;
         this.siteInfoReaderService = siteInfoReaderService;
         this.siteDataConverterService = siteDataConverterService;
+        this.serverListReaderService = serverListReaderService;
+        this.allPublicController = allPublicController;
     }
 
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
+
+        logger.info("Loading server list.");
+
+        try {
+            List<String> serverList = serverListReaderService.read();
+            logger.info("Loaded serverList: " + serverList);
+            allPublicController.setServerList(serverList);
+        } catch (ServerListReaderException e) {
+            logger.warn(e.getMessage());
+        }
 
         logger.info("Loading site data.");
 
