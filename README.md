@@ -69,4 +69,3 @@ The easiest way to run the three components is executing `mvn spring-boot:run` f
 
 The alternative is to create a JAR file for each of three components (`mvn package`) and then executing it with the `java` command.
 
-[## Extending the application. If one wants to extract different or more information the following files must be updated: - `RetrievalCore/src/main/java/ro/h23/dars/retrievalcore/persistence/model/Article.java`] 
