@@ -50,7 +50,7 @@ public class AllPublicController extends ArticleResponseDto {
         try {
             int serverId = Integer.parseInt(serverid);
             RetrievalCoreApiService retrievalCoreApiService = retrievalCoreApiServiceList.get(serverId);
-            return retrievalCoreApiService.getArticleUrls(serverId, requestParamMap);
+            return retrievalCoreApiService.getArticleUrls(requestParamMap);
         } catch(NumberFormatException | IndexOutOfBoundsException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid serverId");
         }
@@ -58,22 +58,46 @@ public class AllPublicController extends ArticleResponseDto {
 
     @GetMapping("articles/{id}")
     public ArticleResponseDto getArticleById(@PathVariable String serverid, @PathVariable Long id) {
-        return publicController.getArticleById(id);
+        try {
+            int serverId = Integer.parseInt(serverid);
+            RetrievalCoreApiService retrievalCoreApiService = retrievalCoreApiServiceList.get(serverId);
+            return retrievalCoreApiService.getArticleById(id);
+        } catch(NumberFormatException | IndexOutOfBoundsException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid serverId");
+        }
     }
 
     @GetMapping("articles/{id}/featured-image")
     public ResponseEntity<byte[]> getArticleFeaturedImageById(@PathVariable String serverid, @PathVariable Long id) {
-        return publicController.getArticleFeaturedImageById(id);
+        try {
+            int serverId = Integer.parseInt(serverid);
+            RetrievalCoreApiService retrievalCoreApiService = retrievalCoreApiServiceList.get(serverId);
+            return retrievalCoreApiService.getArticleFeaturedImageById(id);
+        } catch(NumberFormatException | IndexOutOfBoundsException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid serverId");
+        }
     }
 
     @GetMapping("articles/{id}/contents")
     public ResponseEntity<byte[]> getArticleContents(@PathVariable String serverid, @PathVariable Long id) {
-        return publicController.getArticleContents(id);
+        try {
+            int serverId = Integer.parseInt(serverid);
+            RetrievalCoreApiService retrievalCoreApiService = retrievalCoreApiServiceList.get(serverId);
+            return retrievalCoreApiService.getArticleContents(id);
+        } catch(NumberFormatException | IndexOutOfBoundsException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid serverId");
+        }
     }
 
     @GetMapping("articles/{id}/contents-full")
     public ResponseEntity<byte[]> getArticleContentsById(@PathVariable String serverid, @PathVariable Long id) {
-        return publicController.getArticleContentsById(id);
+        try {
+            int serverId = Integer.parseInt(serverid);
+            RetrievalCoreApiService retrievalCoreApiService = retrievalCoreApiServiceList.get(serverId);
+            return retrievalCoreApiService.getArticleContentsById(id);
+        } catch(NumberFormatException | IndexOutOfBoundsException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid serverId");
+        }
     }
 
 }
