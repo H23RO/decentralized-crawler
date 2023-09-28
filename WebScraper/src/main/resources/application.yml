@@ -14,8 +14,6 @@ scraper:
   site-wait-time-min: 1800
   # maximum waiting time between crawls from the same site (in milliseconds)
   site-wait-time-max: 2700
-  # path to the file containing the crawler seed list
-  gecko-driver-filename: geckodriver.exe
   # path to the output directory that stores the article information and featured image
   output-dir: output
 

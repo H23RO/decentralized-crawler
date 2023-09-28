@@ -21,7 +21,6 @@ public class ScraperConfig {
 
     private int siteWaitTimeMin;
     private int siteWaitTimeMax;
-    private String geckoDriverFilename;
     private String outputDir;
 
 }
