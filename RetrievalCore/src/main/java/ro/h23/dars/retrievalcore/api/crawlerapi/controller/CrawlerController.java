@@ -3,9 +3,11 @@ package ro.h23.dars.retrievalcore.api.crawlerapi.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import ro.h23.dars.retrievalcore.api.crawlerapi.dto.PageDto;
 import ro.h23.dars.retrievalcore.api.crawlerapi.dto.SiteDto;
+import ro.h23.dars.retrievalcore.security.model.UserDetailsImpl;
 import ro.h23.dars.retrievalcore.service.NewPageAddedService;
 import ro.h23.dars.retrievalcore.api.crawlerapi.dto.PagesDto;
 import ro.h23.dars.retrievalcore.persistence.model.Page;
@@ -37,9 +39,12 @@ public class CrawlerController {
 
     @GetMapping("sites")
     @ResponseBody
-    public List<SiteDto> getSites() {
+    public List<SiteDto> getSites(Authentication authentication) {
         logger.info("Sending site list");
-        List<Site> siteList = siteRepository.findAll();
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        Long userId = userDetails.getId();
+        //List<Site> siteList = siteRepository.findAll();
+        List<Site> siteList = siteRepository.findSitesByUserIdNative(userId);
         return siteList.stream().map((site -> new SiteDto(site.getName(), site.getUrlBase(), site.getPageTypeClassifier()))).collect(Collectors.toList());
     }
 

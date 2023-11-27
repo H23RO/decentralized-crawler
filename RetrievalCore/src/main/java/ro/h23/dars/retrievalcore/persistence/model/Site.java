@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import ro.h23.dars.retrievalcore.auth.persistence.model.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -62,6 +63,10 @@ public class Site {
     @Lob
     @Basic(fetch=FetchType.LAZY)
     private String extractorTemplate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("userId")
+    private User user;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
